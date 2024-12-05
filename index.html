@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to bottom, #f0f4f8, #d9e3ec);
+}
+
+/* Button styling */
+button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Heading styling */
+h1 {
+    font-size: 2.2rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Parent container */
+.parent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 95%;
+    max-width: 900px;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+
+/* Child slide container */
+.child {
+    text-align: center;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    background: #ffffff;
+    width: 100%;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.child:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Image styling */
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    object-fit: cover;
+}
+
+/* Slide content styling */
+.child div {
+    font-size: 1.1rem;
+    color: #34495e;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .parent {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
+</style>
+
+</head>
+<body>
+    <h1>Automatic Slides</h1>
+    <div id="parent"></div>
+
+
+
+
+    <script>
+        data = [
+    {
+        image: 'https://wallpaperaccess.com/full/3078918.jpg',
+        content: 'Virat Kohli in an RCB IPL Jersey - Leading the charge with style and determination.'
+    },
+    {
+        image: 'https://wallpaperaccess.com/full/1311181.jpg',
+        content: 'Virat Kohli in Team India Jersey - Embodying passion, pride, and power on the global stage.'
+    },
+    {
+        image: 'https://wallpaperaccess.com/full/2615139.jpg',
+        content: 'Virat Kohli Casual Look - Off the field, effortlessly cool and charismatic.'
+
+    },
+    {
+        image: 'https://wallpaperaccess.com/full/1311173.jpg',
+        content: 'Virat Kohli T20 Captain - Commanding excellence and redefining the game in the shortest format.'
+    },
+    {
+        image: 'https://wallpaperaccess.com/full/3079038.jpg',
+        content: 'Virat Kohli Test Captain - A maestro of patience and grit, leading with unparalleled passion.'
+    }
+];
+
+
+        parent=document.getElementById('parent')
+
+        let currentIndex = 0;
+
+
+
+        function displaySlide() {
+      
+         parent.innerHTML = '';
+       
+
+        child=document.createElement('div')
+        child.classList.add('child')
+
+        img=document.createElement('img')
+        img.src=data[currentIndex].image;
+
+        childa=document.createElement('div')
+        childa.innerText=data[currentIndex].content;
+
+        child.append(img,childa)
+        parent.append(child)
+    
+        currentIndex++;
+        if (currentIndex >= data.length) {
+            currentIndex = 0; 
+        }
+
+        }
+        
+        setInterval(displaySlide, 3000);
+        displaySlide();
+    </script>
+
+
+
+</body>
+</html>
+
